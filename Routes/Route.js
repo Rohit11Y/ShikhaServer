@@ -1,13 +1,13 @@
 const express = require('express');
 
-const {customerInsert , getCustomer , Editcustomer , getcustomerid, cutomerdelete} = require('../Controller/Customercontroller');
+const { customerInsert, getCustomer, Editcustomer, getcustomerid, cutomerdelete } = require('../Controller/Customercontroller');
 
-const router = express.Router();
+const customer = express.Router();
 
-router.route('/insertcustomer').post(customerInsert);
-router.route('/getcustomer').get(getCustomer);
-router.route('/editcustomer/:id').put(Editcustomer);
-router.route('/getcustomer/:id').get(getcustomerid);
-router.route('/getcustomerdelete/:id').delete(cutomerdelete);
+customer.post('/insertcustomer', customerInsert)
+customer.get('/getcustomer', getCustomer)
+customer.put('/editcustomer/:id', Editcustomer)
+customer.get('/getcustomer/:id', getcustomerid)
+customer.delete('/getcustomerdelete/:id', cutomerdelete)
 
-module.exports = router;
+module.exports = customer;

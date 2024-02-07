@@ -1,12 +1,9 @@
 const express = require('express');
 const cors = require('cors');
- require('./Config/conn');
+require('./Config/conn');
 const bodyParser = require('body-parser');
- const customerInsert = require('./Routes/Route');
- const getCustomer = require('./Routes/Route');
- const customeredit = require('./Routes/Route');
- const getcustomerid = require('./Routes/Route');
- const cutomerdelete = require('./Routes/Route');
+const customer = require('./Routes/Route')
+
 const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,13 +19,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/Api/v',customerInsert);
-app.use('/Api/v',getCustomer);
-app.use('/Api/v',customeredit);
-app.use('/Api/v',getcustomerid);
-app.use('/Api/v',cutomerdelete);
+app.use('/api/v1', customer)
 
 const PORT = 4242;
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`running server ${PORT}`);
 })
